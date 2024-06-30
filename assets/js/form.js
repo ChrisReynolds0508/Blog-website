@@ -1,34 +1,14 @@
 // Selects the form element
 const form = document.querySelector('form');
-
+const blogPosts = JSON.parse(localStorage.getItem('blogPosts')) || [];
 const handleFormSubmission = function(event) {
   event.preventDefault();
-  
-  // Grab the form data
-  const formData = new FormData(form);
-  
-  // Check if any field is empty
-  let hasEmptyFields = false;
-  for (let [key, value] of formData.entries()) {
-    if (value.trim() === '') {
-      hasEmptyFields = true;
-      break;
-    }
+  const formData = {
+    title: form.title.value,
+    username: form.username.value,
+    content: form.content.value,
   }
-  
-  // Display error message if any field is empty
-  if (hasEmptyFields) {
-    alert('Please fill in all fields');
-    return;
-  }
-  
-  // Store the form data in local storage
-  for (let [key, value] of formData.entries()) {
-    localStorage.setItem(key, value);
-  }
-  
-  // Redirect to the blog page
-  redirectPage('blog.html');
+
 };
 
 form.addEventListener('submit', handleFormSubmission);
@@ -38,3 +18,25 @@ let redirectURL = '';
 const redirectPage = function (url) {
   location.assign(url);
 };
+const checkFormFields = function() {
+  if (form.title.value === '' || form.username.value === '' || form.content.value === '') {
+    alert('Please fill in all fields before submitting the form.');
+    return false;
+  }
+  return true;
+};
+
+form.addEventListener('submit', function(event) {
+  event.preventDefault();
+  if (checkFormFields()) {
+    const formData = {
+      title: form.title.value,
+      username: form.username.value,
+      content: form.content.value,
+    };
+    blogPosts.push(formData);
+    localStorage.setItem('blogPosts', JSON.stringify(blogPosts));
+    // Redirect to the blog page
+    redirectPage('blog.html');
+  }
+});

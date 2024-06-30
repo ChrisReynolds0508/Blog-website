@@ -1,24 +1,36 @@
 // TODO: Create logic to toggle the light/dark mode styles for the page and circle. The mode should be saved to local storage.
 
 // TODO: Create functions to read and write from local storage
-// Function to toggle the light/dark mode
-function toggleMode() {
-    // Get the current mode from local storage
-    const currentMode = localStorage.getItem('mode');
 
-    // Check if the current mode is 'dark'
-    if (currentMode === 'dark') {
-        // Set the mode to 'light'
-        localStorage.setItem('mode', 'light');
-        // Remove the 'dark' class from the body element
+function toggleMode() {
+    // Check if dark mode is already enabled
+    const isDarkMode = document.body.classList.contains('dark');
+
+    // Toggle the class based on current state
+    if (isDarkMode) {
+        // Switch to light mode
         document.body.classList.remove('dark');
+        localStorage.setItem('mode', 'light');
     } else {
-        // Set the mode to 'dark'
-        localStorage.setItem('mode', 'dark');
-        // Add the 'dark' class to the body element
+        // Switch to dark mode
         document.body.classList.add('dark');
+        localStorage.setItem('mode', 'dark');
     }
 }
+
+// Function to set initial mode based on localStorage
+function setInitialMode() {
+    const savedMode = localStorage.getItem('mode');
+
+    if (savedMode === 'dark') {
+        document.body.classList.add('dark');
+    } else {
+        document.body.classList.remove('dark');
+    }
+}
+
+// Call setInitialMode to set the mode when the script loads
+setInitialMode();
 
 // Function to read from local storage
 function readFromLocalStorage(key) {
