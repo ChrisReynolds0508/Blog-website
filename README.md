@@ -12,6 +12,8 @@ Open the webpage and fill out the required form.  If you miss filling in one or 
 
 Once all required fields are filled out and submitted, you will be redirected to the blog post page.  This will display all current and previous content on the screen.  There is a back button in the top right of the screen that will redirect you back to the landing page if needed.  
 
+If you click the portfolio link in the bottom left of the blog post webpage, you will be redirected to my portfolio page in a seperate tab.
+
 ## Screenshot 
 ![Screenshot of deployed blog website](./assets/images/blogpost1.png)
 ![Screenshot of deployed blog webside](./assets/images/blogpost2.png)
