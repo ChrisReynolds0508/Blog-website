@@ -58,6 +58,13 @@ ul {
   list-style: none;
 }
 
+.dark footer a {
+  color: var(--light); /* Dark mode link color */
+}
+
+.light footer a {
+  color: var(--dark); /* Light mode link color */
+}
 /*
   Classes
 */
