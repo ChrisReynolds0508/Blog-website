@@ -17,9 +17,9 @@ aside {
   align-items: center;
 }
 
-aside, 
-section {
-  flex: 1 1 50%;
+
+aside, form {
+  flex: 1;
 }
 
 aside > h2 {
